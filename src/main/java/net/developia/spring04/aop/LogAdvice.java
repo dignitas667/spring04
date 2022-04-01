@@ -13,6 +13,15 @@ public class LogAdvice {
 
 	@Before("execution(* net.developia.spring04.service.SampleService*.*(..))")
 	public void logBefore() {
-		log.info("-------------------");
+		log.info("------------------- : logBefore()");
 	}
+
+	@Before("execution(* net.developia.spring04.service.SampleService*.doAdd(String,String))"
+			+ " && args(str1,str2)")
+	public void logBeforeWithParam(String str1, String str2) {
+		log.info("------------------- : logBeforeWithParam()");
+		log.info("str1 : " + str1);
+		log.info("str2 : " + str2);
+	}
+
 }
